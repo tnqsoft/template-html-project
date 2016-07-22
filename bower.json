@@ -1,0 +1,33 @@
+{
+  "name": "template-html-project",
+  "version": "1.0.0",
+  "authors": {
+    "name": "Nguyen Nhu Tuan <tuanquynh0508@gmail.com>",
+    "url": "http://i-designer.net/"
+  },
+  "description": "Template HTML Project",
+  "moduleType": [
+    "yui"
+  ],
+  "license": "MIT",
+  "homepage": "http://i-designer.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "private": true,
+  "dependencies": {
+    "jquery": "~3.1.0",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.6.3",
+    "moment": "~2.14.1"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": "2.2.4"
+  }
+}
