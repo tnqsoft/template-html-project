@@ -21,6 +21,7 @@ bower install
 
 ```bash
 $ npm install grunt --save-dev
+$ npm install grunt-bake --save-dev
 $ npm install grunt-banner --save-dev
 $ npm install grunt-contrib-clean --save-dev
 $ npm install grunt-contrib-concat --save-dev
@@ -34,6 +35,9 @@ $ npm install grunt-contrib-watch --save-dev
 ```bash
 $ grunt
 ```
+
+## Reference
+* [https://github.com/MathiasPaumgarten/grunt-bake](https://github.com/MathiasPaumgarten/grunt-bake)
 
 ## Author
 

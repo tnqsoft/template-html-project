@@ -5,6 +5,7 @@ module.exports = function (grunt) {
         sourceDir: 'src',
         buildDir: 'dist',
         vendorDir: 'vendor',
+        tmpDir: 'tmp',
 
         banner: [
             '/**',
@@ -62,18 +63,18 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= vendorDir %>/respondmore/'
                 }]
-            },
-            html_files: {
-                dest: '<%= buildDir %>',
-                src: '*.html',
-                expand: true,
-                cwd: '<%= sourceDir %>',
-                options: {
-                    process: function (content, srcpath) {
-                        return grunt.template.process(content);
-                    }
-                }
             }
+            // html_files: {
+            //     dest: '<%= buildDir %>',
+            //     src: '*.html',
+            //     expand: true,
+            //     cwd: '<%= tmpDir %>',
+            //     options: {
+            //         process: function (content, srcpath) {
+            //             return grunt.template.process(content);
+            //         }
+            //     }
+            // }
         },
 
         less: {
@@ -128,21 +129,35 @@ module.exports = function (grunt) {
             }
         },
 
+        bake: {
+            build: {
+                options: {
+                    process: function (content, srcpath) {
+                        return grunt.template.process(content);
+                    }
+                },
+                files: {
+                    "<%= buildDir %>/home-page.html": "<%= sourceDir %>/home-page.html"
+                }
+            }
+        },
+
         watch: {
             all: {
-                files: ['<%= sourceDir %>/*.html', '<%= sourceDir %>/js/*.js', '<%= sourceDir %>/less/*.less', '<%= sourceDir %>/img/*', '<%= sourceDir %>/fonts/*'],
+                files: ['<%= sourceDir %>/*.html', '<%= sourceDir %>/includes/*.html', '<%= sourceDir %>/js/*.js', '<%= sourceDir %>/less/*.less', '<%= sourceDir %>/img/*', '<%= sourceDir %>/fonts/*'],
                 tasks: ['build', 'timestamp']
             }
         }
     });
 
     grunt.registerTask('default', 'build');
-    grunt.registerTask('build', ['clean', 'copy', 'less', 'cssmin', 'uglify', 'usebanner']);
+    grunt.registerTask('build', ['clean', 'bake:build', 'copy', 'less', 'cssmin', 'uglify', 'usebanner']);
 
     grunt.registerTask('timestamp', function () {
         grunt.log.subhead(Date());
     });
 
+    grunt.loadNpmTasks('grunt-bake');
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');

@@ -9,6 +9,7 @@
   "keywords": "html5, css3, javascript, bootstrap, jquery",
   "devDependencies": {
     "grunt": "~1.0.0",
+    "grunt-bake": "^1.7.2",
     "grunt-banner": "^0.6.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
