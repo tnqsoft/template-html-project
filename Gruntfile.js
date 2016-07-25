@@ -22,7 +22,7 @@ module.exports = function (grunt) {
             main: {
                 files: [{
                     dest: '<%= buildDir %>',
-                    src: ['img/*', 'js/*', 'fonts/*'],
+                    src: ['img/**', 'js/*', 'fonts/*'],
                     cwd: '<%= sourceDir %>/',
                     expand: true,
                     //flatten: true,
@@ -52,11 +52,27 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= vendorDir %>/moment/min/'
                 }, {
-                    dest: '<%= buildDir %>',
-                    src: '*.html',
+                    dest: '<%= buildDir %>/vendor/',
+                    src: 'html5shiv.min.js',
                     expand: true,
-                    cwd: '<%= sourceDir %>'
+                    cwd: '<%= vendorDir %>/html5shiv/dist/'
+                }, {
+                    dest: '<%= buildDir %>/vendor/',
+                    src: 'respondmore.min.js',
+                    expand: true,
+                    cwd: '<%= vendorDir %>/respondmore/'
                 }]
+            },
+            html_files: {
+                dest: '<%= buildDir %>',
+                src: '*.html',
+                expand: true,
+                cwd: '<%= sourceDir %>',
+                options: {
+                    process: function (content, srcpath) {
+                        return grunt.template.process(content);
+                    }
+                }
             }
         },
 
@@ -110,17 +126,29 @@ module.exports = function (grunt) {
                     src: ['<%= buildDir %>/css/*.css', '<%= buildDir %>/js/*.js']
                 }
             }
+        },
+
+        watch: {
+            all: {
+                files: ['<%= sourceDir %>/*.html', '<%= sourceDir %>/js/*.js', '<%= sourceDir %>/less/*.less', '<%= sourceDir %>/img/*', '<%= sourceDir %>/fonts/*'],
+                tasks: ['build', 'timestamp']
+            }
         }
     });
 
     grunt.registerTask('default', 'build');
     grunt.registerTask('build', ['clean', 'copy', 'less', 'cssmin', 'uglify', 'usebanner']);
 
+    grunt.registerTask('timestamp', function () {
+        grunt.log.subhead(Date());
+    });
+
+    grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-banner');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 };
