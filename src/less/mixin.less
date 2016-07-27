@@ -1,0 +1,21 @@
+.tq-background-rgb-by-hex(@color: #000000, @opacity: 0.5) {
+    background-color: rgba( red(@color), green(@color), blue(@color), @opacity );
+}
+
+.tq-gradient(@color1: #F5F5F5, @color2: #ADADAD) {
+  background: @color1;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, rgba(red(@color1), green(@color1), blue(@color1), 1)),
+                               color-stop(1, rgba(red(@color2), green(@color2), blue(@color2), 1)));
+  background: -ms-linear-gradient(bottom,
+                                  rgba(red(@color1), green(@color1), blue(@color1), 1) 0%,
+                                  rgba(red(@color2), green(@color2), blue(@color2), 1) 100%);
+  background: -moz-linear-gradient(center bottom,
+                                   rgba(red(@color1), green(@color1), blue(@color1), 1) 0%,
+                                   rgba(red(@color2), green(@color2), blue(@color2), 1) 100%);
+  background: -o-linear-gradient(rgba(red(@color2), green(@color2), blue(@color2), 1),
+                                 rgba(red(@color1), green(@color1), blue(@color1), 1));
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgba(red(@color2), green(@color2), blue(@color2), 1),rgba(red(@color1), green(@color1), blue(@color1), 1)));
+}

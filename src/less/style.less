@@ -1,6 +1,30 @@
-@colorPrimary: #f938ab;
+// Variables base
+@import "base.less";
 
-.example {
-  color: saturate(@colorPrimary, 5%);
-  border-color: lighten(@colorPrimary, 30%);
+// Library from http://lesselements.com/
+@import "elements.less";
+
+@import "mixin.less";
+
+// Test color style
+@import "color.less";
+
+// Common style
+@import "override.less";
+
+// Common style
+@import "common.less";
+
+// TEST PAGE
+// --------------------------------------------------------------
+.test-color-box {
+    margin-bottom: 30px;
 }
+.test-color-box > div {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+// Media style
+@import "media.less";

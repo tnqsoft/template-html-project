@@ -1,0 +1,77 @@
+// OVERRIDE BOOTSTRAP CORE
+// --------------------------------------------------------------
+
+// NAV
+// --------------------------------------------------------------
+
+// BUTTON
+// --------------------------------------------------------------
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: none;
+}
+
+.btn-flat {
+  background: @color-transparent;
+  border: 0px;
+  .rounded(0px);
+}
+
+.btn-primary {
+  background-color: @color-primary;
+}
+
+.btn-primary {
+    .tq-gradient(@color-primary, @color-primary-light);
+}
+.btn-primary:focus,
+.btn-primary:hover {
+    .tq-gradient(@color-primary, @color-primary-dark);
+}
+
+.btn-success {
+    .tq-gradient(@color-success, @color-success-light);
+}
+.btn-success:focus,
+.btn-success:hover {
+    .tq-gradient(@color-success, @color-success-dark);
+}
+
+.btn-info {
+    .tq-gradient(@color-info, @color-info-light);
+}
+.btn-info:focus,
+.btn-info:hover {
+    .tq-gradient(@color-info, @color-info-dark);
+}
+
+.btn-warning {
+    .tq-gradient(@color-warning, @color-warning-light);
+}
+.btn-warning:focus,
+.btn-warning:hover {
+    .tq-gradient(@color-warning, @color-warning-dark);
+}
+
+.btn-danger {
+    .tq-gradient(@color-danger, @color-danger-light);
+}
+.btn-danger:focus,
+.btn-danger:hover {
+    .tq-gradient(@color-danger, @color-danger-dark);
+}
+
+
+// TABLE
+// --------------------------------------------------------------
+
+
+// mCustomScrollbar
+// --------------------------------------------------------------
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: @color-primary-light;
+}

@@ -14,6 +14,7 @@ module.exports = function (grunt) {
             ' * @author      <%= pkg.author.name %>',
             ' * @copyright   (c) 2016 <%= pkg.author.name %>',
             ' * @license     MIT',
+            ' * @build       ' + Date().toString(),
             ' */\n\n'
         ].join('\n'),
 
@@ -44,6 +45,16 @@ module.exports = function (grunt) {
                     filter: 'isFile'
                 }, {
                     dest: '<%= buildDir %>/vendor/',
+                    src: 'html5shiv.min.js',
+                    expand: true,
+                    cwd: '<%= vendorDir %>/html5shiv/dist/'
+                }, {
+                    dest: '<%= buildDir %>/vendor/',
+                    src: 'respondmore.min.js',
+                    expand: true,
+                    cwd: '<%= vendorDir %>/respondmore/'
+                }, {
+                    dest: '<%= buildDir %>/vendor/',
                     src: 'jquery.min.js',
                     expand: true,
                     cwd: '<%= vendorDir %>/jquery/dist/'
@@ -53,15 +64,19 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= vendorDir %>/moment/min/'
                 }, {
-                    dest: '<%= buildDir %>/vendor/',
-                    src: 'html5shiv.min.js',
+                    dest: '<%= buildDir %>/vendor/swiper',
+                    src: ['css/*.min.*', 'js/*.min.*'],
+                    cwd: '<%= vendorDir %>/Swiper/dist/',
                     expand: true,
-                    cwd: '<%= vendorDir %>/html5shiv/dist/'
+                    //flatten: true,
+                    filter: 'isFile'
                 }, {
-                    dest: '<%= buildDir %>/vendor/',
-                    src: 'respondmore.min.js',
+                    dest: '<%= buildDir %>/vendor/mCustomScrollbar',
+                    src: ['*.min.*', 'mCSB_buttons.png'],
+                    cwd: '<%= vendorDir %>/malihu-custom-scrollbar-plugin/',
                     expand: true,
-                    cwd: '<%= vendorDir %>/respondmore/'
+                    //flatten: true,
+                    filter: 'isFile'
                 }]
             }
             // html_files: {
@@ -137,6 +152,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
+                    "<%= buildDir %>/test-color.html": "<%= sourceDir %>/test-color.html",
                     "<%= buildDir %>/home-page.html": "<%= sourceDir %>/home-page.html"
                 }
             }
