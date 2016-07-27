@@ -2,6 +2,8 @@
 
 HTML Project template for Designer
 
+## Current version 1.0.1
+
 ## Download and run
 ### Install NodeJS
 ```
@@ -14,8 +16,6 @@ sudo npm install -g grunt-cli bower
 npm install -d
 bower install
 ```
-
-## Add more devices
 
 ## Build
 
@@ -34,6 +34,8 @@ $ npm install grunt-contrib-watch --save-dev
 
 ```bash
 $ grunt
+$ grunt build
+$ grunt watch
 ```
 
 ## Reference
